@@ -1,0 +1,107 @@
+.profilo {
+	position:absolute;
+	margin:0;
+	top:0;
+	background-image: url("../icon/sfondo-opaco.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position:center top;
+	width:100%;
+	height:100% !important;
+}
+
+
+
+.navbar-inverse {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
+.navbar-brand {
+	padding: 0 !important;
+}
+.active>a {
+	background-color: transparent !important;
+}
+.navbar-inverse .navbar-nav>li>a {
+	color: black;
+}
+
+.barra {
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	margin:30px;
+}
+.button-group {
+	display:none;
+	
+}
+.btn-primary {
+	background-color: #9f3131 !important;
+	border-color: #9f3131 !important;
+}
+.btn-primary:hover {
+	background-color:#650000 !important;
+}
+.lista-titoli {
+	display:flex;
+	justify-content:space-between;
+}
+.contenitore-classifica {
+	display:flex;
+	flex-direction:column;
+}
+.item-classifica {
+	display:flex;
+	justify-content:space-between;
+	
+}
+.lista {
+	display:none;
+}
+h2 {
+	text-align:center;
+	padding:10px;
+}
+.modal-footer {
+	display:flex;
+	justify-content:center;
+}
+.container-formazione {
+	display:flex;
+	justify-content:space-around;
+	flex-direction:row;
+}
+.modulo {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+.form-display {
+	display:none;
+}
+.list-group {
+	overflow-y:scroll;
+	height:500px;
+	width:300px;
+}
+.calciatori {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+.visualizza_formazione {
+	display:none;
+	text-align:center;
+}
+.costo {
+	font-size:20px;
+	font-weight:bold;
+	
+}
+.formazione {
+	display:flex;
+	justify-content:space-evenly;
+	flex-direction:column;
+	align-items:center;
+}

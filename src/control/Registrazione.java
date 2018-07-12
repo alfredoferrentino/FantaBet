@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.UserBean;
+import model.PartecipaModel;
+import model.PartecipaModelDS;
 import model.UserModel;
 import model.UserModelDB;
 
 @WebServlet("/Registrazione")
 public class Registrazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-static UserModel model= new UserModelDB();
+	static UserModel model= new UserModelDB();
+	static PartecipaModel partecipa = new PartecipaModelDS();
 public Registrazione() {
         super();
     }
@@ -43,6 +46,7 @@ public Registrazione() {
 		System.out.println(bean.toString());
 		
 		model.doSave(bean);
+		partecipa.doSave(username);
 		
 		RequestDispatcher rs = getServletContext().getRequestDispatcher("/index.jsp");
 		rs.forward(request, response);

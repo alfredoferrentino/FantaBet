@@ -5,7 +5,6 @@ var register=document.getElementById('registerbtn');
 var regmodal=document.getElementById('registermodal')
 var closereg=document.getElementById('closeregistermodal');
 var gioca=document.getElementById('inizia');
-var top =document.getElementById('myBtn');
 
 login.onclick = function() {
     logmodal.style.display = "block";
@@ -33,7 +32,7 @@ window.onscroll = function () {
     }
 }
 
-top.onclick = function () {
+document.getElementById("myBtn").onclick = function () {
 	 document.body.scrollTop = 0;
 	 document.documentElement.scrollTop = 0;
 }

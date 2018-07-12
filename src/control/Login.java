@@ -71,6 +71,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("bean", bean);
 			session.setAttribute("isLogged", ruolo);
 			session.setAttribute("checkmail", email);
+			session.setAttribute("utente", username);
 			
 			
 			
@@ -80,7 +81,7 @@ public class Login extends HttpServlet {
 			}
 			
 			else if(bean.getRuolo().equals("u")){ 
-				RequestDispatcher rs = getServletContext().getRequestDispatcher("/index.jsp");
+				RequestDispatcher rs = getServletContext().getRequestDispatcher("/Data");
 				rs.forward(request, response);
 			}
 		}

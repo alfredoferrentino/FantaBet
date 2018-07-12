@@ -21,16 +21,12 @@ public class DriverManagerConnectionPool  {
 	
 	private static synchronized Connection createDBConnection() throws SQLException {
 		Connection newConnection = null;
-		String ip = "localhost";
-		String port = "3306";
 		String db = "fantabet";
 		String username = "root";
 		String password = "fridatorio53";
 		
-		System.out.println("Il db" + db);
 
 		newConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db, username, password);
-		System.out.println("Connessione : " + newConnection);
 
 		newConnection.setAutoCommit(false);
 		return newConnection;
@@ -38,11 +34,9 @@ public class DriverManagerConnectionPool  {
 
 
 	public static synchronized Connection getConnection() throws SQLException {
-		System.out.println("Chiamo getConnection");
 		Connection connection;
 
 		if (!freeDbConnections.isEmpty()) {
-			System.out.println("la lista non è vuota");
 			connection = (Connection) freeDbConnections.get(0);
 			freeDbConnections.remove(0);
 
@@ -54,7 +48,6 @@ public class DriverManagerConnectionPool  {
 				connection = getConnection();
 			}
 		} else {
-			System.out.println("E' vuota");
 			connection = createDBConnection();
 		}
 

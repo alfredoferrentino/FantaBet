@@ -1,0 +1,27 @@
+.profilo {
+	position:absolute;
+	margin:0;
+	top:0;
+	background-image: url("../icon/sfondo-opaco.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position:center top;
+	width:100%;
+	height:100% !important;
+}
+
+
+
+.navbar-inverse {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
+.navbar-brand {
+	padding: 0 !important;
+}
+.active>a {
+	background-color: transparent !important;
+}
+.navbar-inverse .navbar-nav>li>a {
+	color: black;
+}
