@@ -1,3 +1,5 @@
+var input = document.getElementById('searchUser');
+
 function mostra(el, nome, partecipanti, giornate) {
 	console.log($(el).parent(), nome, partecipanti, giornate);
 	$('.modal-title').text("Competzione " + nome );
@@ -29,4 +31,15 @@ $('#modifica').click(function () {
 	setTimeout(function(){
 		window.location.replace("/FantaBet/gestione_utenti.jsp"); }, 3000);
 	}
+});
+
+input.addEventListener("keyup", function(event) {
+	  // Cancel the default action, if needed
+	  event.preventDefault();
+	  // Number 13 is the "Enter" key on the keyboard
+	  if (event.keyCode === 13) {
+	    // Trigger the button element with a click
+	   console.log("ho cliccato invio su :  " + $('.form-control').val());
+	   window.location.href = "/FantaBet/AdminControl?action=search-user&utente="+$('.form-control').val();
+	 }
 });

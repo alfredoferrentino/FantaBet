@@ -55,6 +55,9 @@
 		</nav>
 
 	<div class="lista"> 
+		<div class="searchBar">
+    		<input pattern="^[_A-z0-9]{1,30}$" id="searchUser" class="form-control" type="text" placeholder="Search" aria-label="Search">
+		</div>
 		<div class="col-md-4 col-md-offset-4">
 		<h5>Lista Utenti</h5>
   			<div class="lista-titoli">
@@ -92,18 +95,18 @@
                 	</button>
 				</div>
 				<div class="modal-body mx-3">
-                	<div class="md-form mb-5">
-                    	<i class="fas fa-user-tie"></i>
-                    	<h6>Nickname : </h6><p class="nome"></p>
-               		</div>
-               		<div class="md-form mb-5">
-                    	<i class="fas fa-user-tie"></i>
-                    	<h6>Username : </h6><p class="partecipanti"></p> <br>
-               		</div>
-               		<div class="md-form mb-5">
-                    	<i class="fas fa-user-tie"></i>
-                    	<h6>Email : </h6><p class="giornate"></p> <br>
-               		</div>
+					<dl>
+                		<dt><i class="fas fa-user-tie"></i>  Nickname : </dt>
+                    	<dd class="nome"></dd>
+               		</dl>
+               		<dl>
+                		<dt><i class="fas fa-user-tie"></i>  Username : </dt>
+                    	<dd class="partecipanti"></dd>
+               		</dl>
+               		<dl>
+                		<dt><i class="fas fa-user-tie"></i>  Email : </dt>
+                    	<dd class="giornate"></dd>
+               		</dl>
                	</div>
 			</div>
 		</div>

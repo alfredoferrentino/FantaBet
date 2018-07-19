@@ -3,6 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Collection;
 
+import bean.CompetizioneBean;
 import bean.UserBean;
 
 
@@ -17,4 +18,6 @@ public interface UserModel {
 	public String doRetrieveRole(String username) throws SQLException;
 	
 	public void doUpdate(String nickname, String password, String email,String username) throws SQLException;
+	
+	public Collection<UserBean> doSearch (String utente) throws SQLException;
 }

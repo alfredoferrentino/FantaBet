@@ -1,4 +1,4 @@
-var input = document.getElementById("search");
+var input = document.getElementById("searchComp");
 
 function remove(element, id) {
 	var xhttp = new XMLHttpRequest();

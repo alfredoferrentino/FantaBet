@@ -12,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-
+import bean.CompetizioneBean;
 import bean.UserBean;
 import control.DriverManagerConnectionPool;
 
@@ -196,7 +196,47 @@ public class UserModelDB implements UserModel{
 				}
 			}
 		}
-	
+		@Override
+		public Collection<UserBean> doSearch(String utente) throws SQLException {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			Collection<UserBean> utenti = new LinkedList<UserBean>();
+			
+			String selectSQL = "SELECT * FROM  utente WHERE nickname LIKE ? ";
+
+			try {
+				connection = ds.getConnection();
+				utente = "%" + utente +"%";
+				preparedStatement = connection.prepareStatement(selectSQL);
+				preparedStatement.setString(1, utente);
+				
+				
+
+				ResultSet rs = preparedStatement.executeQuery();
+				
+
+				while (rs.next()) {
+					UserBean bean = new UserBean();
+					bean.setUsername(rs.getString("username"));
+					bean.setNick(rs.getString("nickname"));
+					bean.setPassword(rs.getString("pass"));
+					bean.setEmail(rs.getString("email"));
+					bean.setRuolo(rs.getString("ruolo"));
+					utenti.add(bean);
+					System.out.println(bean);
+				}
+
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					if (connection != null)
+						connection.close();
+				}
+			}
+			return utenti;
+		}
 	
 	
 }

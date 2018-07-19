@@ -36,8 +36,8 @@
       			</ul>
       			<% } else { %>
       			<ul class="nav navbar-nav">
-      				<li class="active"><a href="home_utente.jsp">Home</a></li>
-      				<li><a href="profilo.jsp">Profilo</a></li>
+      				<li><a href="home_utente.jsp">Home</a></li>
+      				<li class="active"><a href="profilo.jsp">Profilo</a></li>
       				<li><a href="Competizione?action=retrieve-comp">Gestione Competizioni</a></li>
       				<li><a href="gestione_utenti.jsp">Gestione Utenti</a></li>
       			</ul>

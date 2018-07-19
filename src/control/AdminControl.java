@@ -89,6 +89,13 @@ public class AdminControl extends HttpServlet {
 					String email = (String) request.getParameter("email");
 					modello_user.doUpdate(nickname, password, email, username);
 				}
+				
+				if (action.equalsIgnoreCase("search-user")) {
+					String user= request.getParameter("utente");
+					request.getSession().setAttribute("lista_utenti", modello_user.doSearch(user));
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/gestione_utenti.jsp");
+					dispatcher.forward(request, response);
+				}
 			}
 			
 			

@@ -58,8 +58,8 @@
 		</nav>
 
 	<div class="lista">
-		<div class="md-form">
-    		<input pattern="^[_A-z0-9]{1,30}$" id="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
+		<div class="searchBar">
+    		<input pattern="^[_A-z0-9]{1,30}$" id="searchComp" class="form-control" type="text" placeholder="Search" aria-label="Search">
     		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="AdminControl?action=carica-calciatori">Inserisci voti</a>
     		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="AdminControl?action=approva-comp">Approva Competizioni</a>
 		</div>
@@ -100,18 +100,18 @@
                 	</button>
 				</div>
 				<div class="modal-body mx-3">
-                	<div class="md-form mb-5">
-                    	<i class="fas fa-user-tie"></i>
-                    	<h6>Nome Competizione : </h6><p class="nome"></p>
-               		</div>
-               		<div class="md-form mb-5">
-                    	<i class="fas fa-user-tie"></i>
-                    	<h6>Numero Partecipanti : </h6><p class="partecipanti"></p> <br>
-               		</div>
-               		<div class="md-form mb-5">
-                    	<i class="fas fa-user-tie"></i><
-                    	<h6>Numero Giornate : </h6><p class="giornate"></p> <br>
-               		</div>
+                	<dl>
+                		<dt><i class="fas fa-user-tie"></i>  Nome Competizione :</dt>
+                    	<dd class="nome"></dd>
+               		</dl>
+               		<dl>
+                		<dt><i class="fas fa-user-tie"></i>  Numero Partecipanti :</dt>
+                    	<dd class="partecipanti"></dd>
+               		</dl>
+               		<dl>
+                		<dt><i class="fas fa-user-tie"></i>  Numero Giornate :</dt>
+                    	<dd class="giornate"></dd>
+               		</dl>
                	</div>
 			</div>
 		</div>
@@ -154,8 +154,8 @@
 		</div>
 	</div>
 	<div class="approva">
-		<div class="md-form">
-    		<input id="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
+		<div class="searchBar">
+    		<input id="searchComp" class="form-control" type="text" placeholder="Search" aria-label="Search">
     		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="AdminControl?action=carica-calciatori">Inserisci voti</a>
     		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="AdminControl?action=approva-comp">Approva Competizioni</a>
 		</div>
