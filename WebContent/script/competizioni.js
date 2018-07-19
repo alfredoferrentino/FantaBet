@@ -167,6 +167,13 @@ $('#insert-form').click(function () {
 			$('.alert').empty(); }, 2000);
 		return;
 	}
+	if (id_calciatore.length < 11) {
+		$('.alert').html('<p style="color:red">Numero di giocatori non sufficiente</p>');
+		setTimeout(function() {
+			$('.alert').empty(); }, 2000);
+		return;
+	}
+		
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (xhttp.status == 405) {

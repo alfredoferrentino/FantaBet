@@ -24,6 +24,7 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
 	<title>Competizioni</title>
 </head>
 <body>
@@ -104,21 +105,29 @@
                 		</button>
             		</div>
            			<div class="modal-body mx-3">
-                		<div class="md-form mb-5">
-                    		<i class="fas fa-users"></i>
-                    		<label data-error="wrong" data-success="right" for="form3">Con quante persone vuoi giocare?</label>
-                    		<input type="number" id="form3" class="form-control validate">
-               			</div>
-               			<div class="md-form mb-4">
-                    		<i class="fas fa-list-ol"></i>
-                    		<label data-error="wrong" data-success="right" for="form2">Quante giornate vuoi giocare?</label>
-                    		<input type="number" id="form2" class="form-control validate">
-                		</div>
-                		<div class="md-form mb-4">
-                    		<i class="fa fa-user prefix grey-text"></i>
-                    		<label data-error="wrong" data-success="right" for="form1">Nome della competizione</label>
-                    		<input type="text" id="form1" class="form-control validate">
-                		</div>
+           			<form role="form" data-toggle="validator">
+           			<div class="modal-body mx-3">
+           				<div class="form-group">
+           					<i class="fas fa-users"></i>
+    						<label for="form3" class="control-label">Con quante persone vuoi giocare?</label>
+    						<input min="2" max="10" type="number" class="form-control" id="form3">
+    						<div class="help-block with-errors"></div>
+  						</div>
+  						<div class="form-group">
+  							<i class="fas fa-list-ol"></i>
+    						<label for="form2" class="control-label">Quante giornate vuoi giocare?</label>
+        					<input type="number" min="1" max="38" class="form-control" id="form2">
+       						 <div class="help-block with-errors"></div>
+      					</div>
+      					<div class="form-group">
+      						<i class="fa fa-user prefix grey-text"></i>
+      						<label for="form1" class="control-label">Nome della competizione</label>
+        					<input pattern="^[_A-z0-9]{1,30}$" type="text" class="form-control" id="form1">
+        					<div class="help-block with-errors"></div>
+        				</div>
+        				
+            		</div>
+            		</form>
             		</div>
             		<div class="modal-footer">
                 		<button id="send" class="btn btn-primary btn-lg">Richiedi <i class="fas fa-paper-plane"></i></button>
@@ -136,12 +145,17 @@
                 		</button>
             		</div>
            			<div class="modal-body mx-3">
-                		<div class="md-form mb-5">
-                    		<i class="fas fa-users"></i>
-                    		<label data-error="wrong" data-success="right" for="form4">Chi vuoi aggiungere?</label>
-                    		<input type="text" id="form4" class="form-control validate">
-               			</div>
-            		</div>
+           			<form role="form" data-toggle="validator">
+           				<div class="form-group">
+           					<i class="fas fa-users"></i>
+    						<label for="form4" class="control-label">Chi vuoi aggiungere?</label>
+    						<input pattern="^[_A-z0-9]{1,30}$" type="text" class="form-control" id="form4">
+    						<div class="help-block with-errors"></div>
+  						</div>
+               		</form>
+        			</div>
+            		
+            		
             		<div class="modal-footer">
                 		<button id="add" class="btn btn-primary btn-lg">Aggiungi <i class="fas fa-paper-plane"></i></button>
             		</div>

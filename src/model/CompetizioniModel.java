@@ -14,4 +14,6 @@ public interface CompetizioniModel {
 	public Collection<CompetizioneBean> doSearch (String nome) throws SQLException;
 	public Collection<CompetizioneBean> doRetrieveApproved() throws SQLException;
 	public void Approva(int id) throws SQLException;
+	public void doPartecipa(String utente, int comp) throws SQLException;
+	public int doRetrieveByNome(String nome) throws SQLException;
 }

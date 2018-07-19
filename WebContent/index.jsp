@@ -10,10 +10,10 @@
   	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
 	<title>FantaBet</title>
 </head>
 <body>
-
 	<div class="modal" id="loginmodal">
 
 		<div class="modal-dialog">
@@ -25,12 +25,18 @@
 						<span title="CloseLogin">&times;</span>
 					</button>
 				</div>
-				<form action="Login" method="post">
+				<form action="Login" method="post" data-toggle="validator">
 					<div class="modal-body">
-						<input class="form-control" type="text" name="username"
-							placeholder="Enter Username" required><br> <input
-							class="form-control" type="password" name="psw"
-							placeholder="Enter Password" required>
+						<div class="form-group">
+    						<label for="inputUser" class="control-label">Username</label>
+    						<input pattern="^[_A-z0-9]{1,20}$"  name="username" type="text" class="form-control" id="inputUser" placeholder="Enter Username" required>
+    						<div class="help-block with-errors"></div>
+  						</div>
+  						<div class="form-group">
+    						<label for="inputPsw" class="control-label">Password</label>
+        					<input name="psw" type="password" pattern="^[_A-z0-9]{6,15}$" class="form-control" id="inputPsw" placeholder="Enter Password" required>
+       						 <div class="help-block with-errors"></div>
+      					</div>
 						<div class="checkbox">
 							<label><input type="checkbox" checked="checked">Remember me</label>
 						</div>
@@ -58,16 +64,33 @@
 						<span title="CloseLogin">&times;</span>
 					</button>
 				</div>
-				<form action="Registrazione" method="post">
+				<form action="Registrazione" method="post" data-toggle="validator">
 					<div class="modal-body">
-						<input class="form-control" type="text" name="username"
-							placeholder="Enter Username" required><br> <input
-							class="form-control" type="password" name="password"
-							placeholder="Enter Password" required><br> <input
-							class="form-control" type="text" name="email"
-							placeholder="Enter Email" required><br> <input
-							class="form-control" type="text" name="nick"
-							placeholder="Enter Nickname" required><br>
+						<div class="form-group">
+    						<label for="inputName" class="control-label">Username</label>
+    						<input pattern="^[_A-z0-9]{1,20}$"  name="username" type="text" class="form-control" id="inputName" placeholder="Enter Username" required>
+    						<div class="help-block with-errors">Only letters and numbers, no special characters</div>
+  						</div>
+  						<div class="form-group">
+    						<label for="inputPassword" class="control-label">Password</label>
+        					<input name="password" type="password" pattern="^[_A-z0-9]{6,15}$" class="form-control" id="inputPassword" placeholder="Enter Password" required>
+       						 <div class="help-block with-errors">Minimum of 6 characters, no special characters</div>
+      					</div>
+      					<div class="form-group">
+      						<label for="inputPasswordConfirm" class="control-label">Confirm Password</label>
+        					<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+        					<div class="help-block with-errors"></div>
+        				</div>
+						<div class="form-group">
+   							<label for="inputEmail">Email</label>
+   							<input class="form-control" type="email" id="inputEmail" name="email" placeholder="Enter Email" required>
+   							<div class="help-block with-errors"></div>
+  						</div>
+  						 <div class="form-group">
+    						<label for="inputNick" class="control-label">Nickname</label>
+    						<input pattern="^[_A-z0-9]{1,20}$" name="nick" type="text" class="form-control" id="inputNick" placeholder="Enter Nickname" required>
+    						<div class="help-block with-errors"></div>
+  						</div>
 					</div>
 					<div class="modal-footer">
 						<div>

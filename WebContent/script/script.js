@@ -36,3 +36,13 @@ document.getElementById("myBtn").onclick = function () {
 	 document.body.scrollTop = 0;
 	 document.documentElement.scrollTop = 0;
 }
+
+$(document).ready(function() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (xhttp.status == 405) {
+			console.log("stai accis");
+		}
+	}
+});
+

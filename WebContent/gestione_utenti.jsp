@@ -20,6 +20,7 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
 <title>Gestione Utenti</title>
 </head>
 <body>
@@ -72,8 +73,8 @@
   			%>
 			<div class="item-classifica">
 				<p><%=utente.getNick()%></p>
-				<a data-toggle="modal" data-target="#showmodal" onclick = "mostra(this, '<%=utente.getNick()%>', '<%=utente.getUsername()%>', '<%=utente.getEmail()%>')">Visualizza</a>
-				<a data-toggle="modal" data-target="#modalModifica" onclick = "modifica(this, '<%=utente.getUsername()%>', '<%=utente.getNick()%>', '<%=utente.getEmail()%>', '<%=utente.getPassword()%>')">Modifica</a>
+				<a class="text-warning" style="text-decoration:none;" data-toggle="modal" data-target="#showmodal" onclick = "mostra(this, '<%=utente.getNick()%>', '<%=utente.getUsername()%>', '<%=utente.getEmail()%>')">Visualizza</a>
+				<a class="text-warning" style="text-decoration:none;" data-toggle="modal" data-target="#modalModifica" onclick = "modifica(this, '<%=utente.getUsername()%>', '<%=utente.getNick()%>', '<%=utente.getEmail()%>', '<%=utente.getPassword()%>')">Modifica</a>
 			</div>
 			<hr>
 
@@ -117,31 +118,35 @@
                 		</button>
             		</div>
            			<div class="modal-body mx-3">
-                		<div class="md-form mb-5">
-                    		<i class="fas fa-user-tie"></i>
-                    		<label data-error="wrong" data-success="right" for="nick">Nickname</label>
-                    		<input type="text" id="nick" class="form-control validate">
-               			</div>
-               			<div class="md-form mb-4">
-                    		<i class="fas fa-key"></i>
-                    		<label data-error="wrong" data-success="right" for="pass">Nuova Password</label>
-                    		<input type="password" id="pass" class="form-control validate">
-                		</div>
-                		<div class="md-form mb-4">
-                    		<i class="fa fa-key"></i>
-                    		<label data-error="wrong" data-success="right" for="pass-conf">Conferma Password</label>
-                    		<input type="password" id="pass-conf" class="form-control validate">
-                		</div>
-                		<div class="md-form mb-4">
-                    		<i class="fa fa-envelope-open"></i>
-                    		<label data-error="wrong" data-success="right" for="mail">E-mail</label>
-                    		<input type="text" id="mail" class="form-control validate">
-                		</div>
-                		<div class="md-form mb-4">
-                    		<i class="fa fa-envelope-open"></i>
-                    		<label data-error="wrong" data-success="right" for="username">Username</label>
-                    		<input type="text" id="username" class="form-control validate">
-                		</div>
+           			<form role="form" data-toggle="validator">
+           			<div class="modal-body mx-3">
+           				<div class="form-group">
+    						<label for="nick" class="control-label">Nickname</label>
+    						<input pattern="^[_A-z0-9]{1,20}$" type="text" class="form-control" id="nick">
+    						<div class="help-block with-errors">Only letters and numbers, no special characters</div>
+  						</div>
+  						<div class="form-group">
+    						<label for="pass" class="control-label">Password</label>
+        					<input type="password" pattern="^[_A-z0-9]{6,15}$" class="form-control" id="pass">
+       						 <div class="help-block with-errors">Minimum of 6 characters, no special characters</div>
+      					</div>
+      					<div class="form-group">
+      						<label for="pass-conf" class="control-label">Confirm Password</label>
+        					<input type="password" class="form-control" id="pass-conf" data-match="#pass" data-match-error="Whoops, these don't match" placeholder="Confirm">
+        					<div class="help-block with-errors"></div>
+        				</div>
+        				<div class="form-group">
+   							<label for="mail">Email</label>
+   							<input class="form-control" type="email" id="mail">
+   							<div class="help-block with-errors"></div>
+  						</div>
+  						<div class="form-group">
+    						<label for="username" class="control-label">Username</label>
+    						<input pattern="^[_A-z0-9]{1,20}$" type="text" class="form-control" id="username">
+    						<div class="help-block with-errors">Only letters and numbers, no special characters</div>
+  						</div>
+            		</div>
+            		</form>
             		</div>
             		<div class="modal-footer">
                 		<button id="modifica" class="btn btn-primary btn-lg">Modifica<i class="fas fa-paper-plane"></i></button>

@@ -60,6 +60,8 @@ public class Competizione extends HttpServlet {
 					int num_giornate = Integer.parseInt(request.getParameter("num_giornate"));
 					int num_partecipanti = Integer.parseInt(request.getParameter("num_partecipanti"));
 					modello.doSave(nome_competizione, num_giornate, num_partecipanti);
+					String utente = (String) request.getSession().getAttribute("utente");
+					modello.doPartecipa(utente, modello.doRetrieveByNome(nome_competizione));
 				}
 				if (action.equalsIgnoreCase("load")) {
 					String ruolo = (String) request.getParameter("ruolo");

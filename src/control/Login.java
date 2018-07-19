@@ -1,7 +1,7 @@
 package control;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -79,9 +79,15 @@ public class Login extends HttpServlet {
 		}
 		
 		else {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('User or password incorrect');");
+			out.println("location='index.jsp';");
+			out.println("</script>");
 			System.out.println("username or pass incorrect!");
-			RequestDispatcher rs = getServletContext().getRequestDispatcher("/index.jsp");
-			rs.forward(request,response);
+			//RequestDispatcher rs = getServletContext().getRequestDispatcher("/index.jsp");
+			//rs.forward(request,response);
 		}
 		
 		}

@@ -69,6 +69,7 @@ public class CompetizioniModelDS implements CompetizioniModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String insertSQL ="INSERT INTO competizione (nome,numGiornate,numPartecipanti,approvata) VALUES (?,?,?,?)";
+		
 
 
 
@@ -264,6 +265,66 @@ public class CompetizioniModelDS implements CompetizioniModel {
 			}
 		
 		
+	}
+
+	@Override
+	public void doPartecipa(String utente, int comp) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String insertSQL ="INSERT INTO partecipazione (utente,competizione) VALUES (?,?)";
+		
+
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+	
+			preparedStatement = connection.prepareStatement(insertSQL);
+			preparedStatement.setString(1, utente);
+			preparedStatement.setInt(2, comp);
+			preparedStatement.executeUpdate();
+			
+			connection.commit();
+
+		}
+
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+	}
+
+	@Override
+	public int doRetrieveByNome(String nome) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		int id = 0;
+		String selectSQL = "SELECT idComp FROM competizione WHERE nome = ? ";
+				
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, nome);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			if (rs.next()) {
+				id = Integer.parseInt((rs.getString("idComp")));
+			}
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			}	finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+		return id;
 	}
 
 }

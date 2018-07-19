@@ -23,6 +23,7 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
 <title>Gestione Competizioni</title>
 </head>
 <body>
@@ -58,9 +59,9 @@
 
 	<div class="lista">
 		<div class="md-form">
-    		<input id="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
-    		<a onclick="mostraCalciatori()" href="AdminControl?action=carica-calciatori">Inserisci voti</a>
-    		<a onclick="mostraApprovate()" href="AdminControl?action=approva-comp">Approva Competizioni</a>
+    		<input pattern="^[_A-z0-9]{1,30}$" id="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
+    		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="AdminControl?action=carica-calciatori">Inserisci voti</a>
+    		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="AdminControl?action=approva-comp">Approva Competizioni</a>
 		</div>
 		<div class="col-md-4 col-md-offset-4">
 		<h5>Lista Competizioni</h5>
@@ -80,8 +81,8 @@
   			%>
 			<div class="item-classifica">
 				<p><%=competizione.getNome()%></p>
-				<a data-toggle="modal" data-target="#showmodal" onclick = "show(this, '<%=competizione.getNome()%>', <%=competizione.getNumPartecipanti()%>, <%=competizione.getNumGiornate()%>)" >Visualizza</a>
-				<a onclick = "remove(this, <%=competizione.getIdComp()%>)">Rimuovi</a>
+				<a class="text-warning" style="text-decoration:none;" data-toggle="modal" data-target="#showmodal" onclick = "show(this, '<%=competizione.getNome()%>', <%=competizione.getNumPartecipanti()%>, <%=competizione.getNumGiornate()%>)" >Visualizza</a>
+				<a class="text-warning" style="text-decoration:none;" onclick = "remove(this, <%=competizione.getIdComp()%>)">Rimuovi</a>
 			</div>
 			<hr>
 
@@ -155,8 +156,8 @@
 	<div class="approva">
 		<div class="md-form">
     		<input id="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
-    		<a onclick="mostraCalciatori()" href="AdminControl?action=carica-calciatori">Inserisci voti</a>
-    		<a onclick="mostraApprovate()" href="AdminControl?action=approva-comp">Approva Competizioni</a>
+    		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="AdminControl?action=carica-calciatori">Inserisci voti</a>
+    		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="AdminControl?action=approva-comp">Approva Competizioni</a>
 		</div>
 		<div class="col-md-4 col-md-offset-4">
 		<h5>Lista Competizioni</h5>

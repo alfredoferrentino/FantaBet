@@ -32,7 +32,7 @@
     			<div class="navbar-header">
     				<a class="navbar-brand" href="#"><img src="icon/Logo.png" style="width:150px; height:60px"></a>
     			</div>
-    			<% if (ruolo.equals("u"))  { System.out.println("Il ruolo è :" + ruolo);%>
+    			<% if (ruolo.equals("u"))  { %>
     			<ul class="nav navbar-nav">
       				<li class="active"><a href="home_utente.jsp">Home</a></li>
       				<li><a href="profilo.jsp">Profilo</a></li>
