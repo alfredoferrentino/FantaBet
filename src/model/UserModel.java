@@ -15,4 +15,6 @@ public interface UserModel {
 	public Collection<UserBean> doRetrieveAll() throws SQLException;
 	
 	public String doRetrieveRole(String username) throws SQLException;
+	
+	public void doUpdate(String nickname, String password, String email,String username) throws SQLException;
 }

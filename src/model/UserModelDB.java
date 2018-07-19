@@ -167,6 +167,36 @@ public class UserModelDB implements UserModel{
 		return ruolo;
 	}
 	
+		public synchronized void doUpdate(String nickname, String password, String email,String username) throws SQLException {
+
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+			
+			String updateSQL = "UPDATE  utente SET nickname = ?,pass = ?, email = ? WHERE username = ?";
+
+			try {
+				connection = ds.getConnection();
+				preparedStatement = connection.prepareStatement(updateSQL);
+				preparedStatement.setString(1, nickname);
+				preparedStatement.setString(2, password);
+				preparedStatement.setString(3, email);
+				preparedStatement.setString(4, username);
+				
+
+				preparedStatement.executeUpdate();
+
+				
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					if (connection != null)
+						connection.close();
+				}
+			}
+		}
+	
 	
 	
 }

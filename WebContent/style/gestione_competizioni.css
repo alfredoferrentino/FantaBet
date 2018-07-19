@@ -1,4 +1,4 @@
-.profilo {
+.container {
 	position:absolute;
 	margin:0;
 	top:0;
@@ -31,12 +31,43 @@
 .navbar-inverse .navbar-nav>li>a {
 	color: black;
 }
-.info-profilo {
+.lista-titoli {
 	display:flex;
-	justify-content: space-around;
-	align-items: center;
+	justify-content:space-between;
 }
-.modal-footer {
+.contenitore-classifica {
+	height:500px;
+	overflow-y:scroll;
+}
+.item-classifica {
+	display:flex;
+	justify-content:space-between;
+	margin:10px;
+	
+}
+.form-control {
+	background-color:transparent;
+	border:none;
+	border-bottom:1px solid #ced4da;
+	width:50%;
+}
+.md-form {
 	display:flex;
 	justify-content:center;
+}
+::-webkit-input-placeholder { 
+  color: white !important;
+}
+.voti {
+	display:none;
+}
+.form-control {
+	margin:10px;
+}
+
+.item-classifica input::-webkit-input-placeholder {
+	color: grey !important;
+}
+.approva {
+	display:none;
 }

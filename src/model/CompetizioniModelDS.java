@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import bean.CompetizioneBean;
 import control.DriverManagerConnectionPool;
 
 
@@ -93,6 +94,176 @@ public class CompetizioniModelDS implements CompetizioniModel {
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
+	}
+
+	@Override
+	public Collection<CompetizioneBean> doRetrieveAll() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		Collection<CompetizioneBean> competizioni = new LinkedList<CompetizioneBean>();
+		String selectSQL = "SELECT * FROM competizione WHERE approvata = 1";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				CompetizioneBean bean = new CompetizioneBean();
+				bean.setIdComp(rs.getInt("idComp"));
+				bean.setNome(rs.getString("nome"));
+				bean.setNumGiornate(rs.getInt("numGiornate"));
+				bean.setNumPartecipanti(rs.getInt("numPartecipanti"));
+				bean.setApprovata(rs.getBoolean("approvata"));
+				competizioni.add(bean);
+			}
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			}	finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+		return competizioni;
+	}
+
+	@Override
+	public boolean doDelete(int idComp) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int result = 0;
+
+		String deleteSQL = "DELETE FROM competizione WHERE idComp = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setInt(1, idComp);
+
+			result = preparedStatement.executeUpdate();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return (result != 0);
+	}
+
+	@Override
+	public Collection<CompetizioneBean> doSearch(String nome) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		Collection<CompetizioneBean> competizioni = new LinkedList<CompetizioneBean>();
+		
+		String selectSQL = "SELECT * FROM  competizione WHERE nome LIKE ? ";
+
+		try {
+			connection = ds.getConnection();
+			nome = "%" + nome +"%";
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, nome);
+			
+			
+
+			ResultSet rs = preparedStatement.executeQuery();
+			
+
+			while (rs.next()) {
+				CompetizioneBean bean = new CompetizioneBean();
+				bean.setIdComp(rs.getInt("idComp"));
+				bean.setNome(rs.getString("nome"));
+				bean.setNumGiornate(rs.getInt("numGiornate"));
+				bean.setNumPartecipanti(rs.getInt("numPartecipanti"));
+				competizioni.add(bean);
+				System.out.println(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return competizioni;
+	}
+
+	@Override
+	public Collection<CompetizioneBean> doRetrieveApproved() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		Collection<CompetizioneBean> competizioni = new LinkedList<CompetizioneBean>();
+		String selectSQL = "SELECT * FROM competizione WHERE approvata = 0";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				CompetizioneBean bean = new CompetizioneBean();
+				bean.setIdComp(rs.getInt("idComp"));
+				bean.setNome(rs.getString("nome"));
+				bean.setNumGiornate(rs.getInt("numGiornate"));
+				bean.setNumPartecipanti(rs.getInt("numPartecipanti"));
+				bean.setApprovata(rs.getBoolean("approvata"));
+				competizioni.add(bean);
+			}
+		}
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			}	finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+		return competizioni;
+	}
+
+	@Override
+	public void Approva(int id) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String updateSQL = "UPDATE competizione SET approvata = 1 WHERE idComp = ?";
+		
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSQL);
+			preparedStatement.setInt(1, id);
+			
+			preparedStatement.executeUpdate();
+		}
+			
+			finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				}	finally {
+					if (connection != null) {
+						connection.close();
+					}
+				}
+			}
+		
+		
 	}
 
 }

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +87,30 @@ public class Competizione extends HttpServlet {
 					String competizione = (String) request.getParameter("nome_competizione");
 					System.out.println("Aggiungo il giocatore : " + giocatore + " alla competizione " + competizione);
 					modello_partecipazione.aggiungi(giocatore, competizione);
+					
+				}
+				
+				if (action.equalsIgnoreCase("remove-comp")) {
+					int id = Integer.parseInt(request.getParameter("idComp"));
+					modello.doDelete(id);
+					
+				}
+				if (action.equalsIgnoreCase("retrieve-comp")) {
+					request.getSession().setAttribute("lista_competizioni", modello.doRetrieveAll());
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/gestione_competizioni.jsp");
+					dispatcher.forward(request, response);
+				}
+				if (action.equalsIgnoreCase("search-comp")) {
+					String nome = request.getParameter("nome");
+					request.getSession().setAttribute("lista_competizioni", modello.doSearch(nome));
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/gestione_competizioni.jsp");
+					dispatcher.forward(request, response);
+				}
+				
+				if (action.equalsIgnoreCase("carica-calciatori")) {
+					request.getSession().setAttribute("lista-calciatori", modello_calciatore.doRetrieveAll());
+					
+					response.sendRedirect("/gestione_competizioni.jsp");
 					
 				}
 			}

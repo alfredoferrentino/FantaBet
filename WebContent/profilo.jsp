@@ -1,5 +1,12 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="bean.UserBean"%>
+<%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	UserBean utente = (UserBean) session.getAttribute("bean");
+    	String ruolo = (String) session.getAttribute("isLogged");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +15,7 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<link rel="stylesheet" href="style/profilo.css">
   	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<title>Profilo</title>
@@ -19,17 +27,78 @@
     			<div class="navbar-header">
     				<a class="navbar-brand" href="#"><img src="icon/Logo.png" style="width:150px; height:60px"></a>
     			</div>
+    			<% if (ruolo == "u")  { System.out.println("Il ruolo è :" + ruolo);%>
     			<ul class="nav navbar-nav">
       				<li><a href="home_utente.jsp">Home</a></li>
       				<li class="active"><a href="profilo.jsp">Profilo</a></li>
-      				<li><a href="competizioni.jsp">Competizioni</a></li>
-				</ul>
+      				<li><a href="Competizione?action=competizioni">Competizioni</a></li>
+      			</ul>
+      			<% } else { %>
+      			<ul class="nav navbar-nav">
+      				<li><a href="home_utente.jsp">Home</a></li>
+      				<li class="active"><a href="profilo.jsp">Profilo</a></li>
+      				<li><a href="AdminControl?action=retrieve-comp">Gestione Competizioni</a></li>
+      				<li><a href="gestione_utenti.jsp">Gestione Utenti</a></li>
+      			</ul>
+      			<% } %>
+      				
+      				
+      				
+				
     			<ul class="nav navbar-nav navbar-right">
       				<li><a href="Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     			</ul>
   			</div>
 		</nav>
+		<div class="info-profilo">
+			<div class="dati-personali">
+				<h6>Nickname : <%=utente.getNick() %></h6>
+				<h6>E-mail : <%=utente.getEmail() %></h6>
+							
+			
+			</div>
+			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalModifica">Modifica Profilo</button>
+		
+		</div>
+		<div class="modal fade" id="modalModifica" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    		<div class="modal-dialog" role="document">
+        		<div class="modal-content">
+            		<div class="modal-header text-center">
+                		<h4 class="modal-title w-100 font-weight-bold">Modifica Profilo</h4>
+                		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    	<span aria-hidden="true">&times;</span>
+                		</button>
+            		</div>
+           			<div class="modal-body mx-3">
+                		<div class="md-form mb-5">
+                    		<i class="fas fa-user-tie"></i>
+                    		<label data-error="wrong" data-success="right" for="nick">Nickname</label>
+                    		<input type="text" id="nick" class="form-control validate" value="<%=utente.getNick()%>">
+               			</div>
+               			<div class="md-form mb-4">
+                    		<i class="fas fa-key"></i>
+                    		<label data-error="wrong" data-success="right" for="pass">Nuova Password</label>
+                    		<input type="password" id="pass" class="form-control validate">
+                		</div>
+                		<div class="md-form mb-4">
+                    		<i class="fa fa-key"></i>
+                    		<label data-error="wrong" data-success="right" for="pass-conf">Conferma Password</label>
+                    		<input type="password" id="pass-conf" class="form-control validate">
+                		</div>
+                		<div class="md-form mb-4">
+                    		<i class="fa fa-envelope-open"></i>
+                    		<label data-error="wrong" data-success="right" for="mail">E-mail</label>
+                    		<input type="text" id="mail" class="form-control validate" value="<%=utente.getEmail()%>">
+                		</div>
+            		</div>
+            		<div class="modal-footer">
+            			<input type="hidden" id="user" value="<%=utente.getUsername()%>">
+                		<button id="modifica" class="btn btn-primary btn-lg">Modifica<i class="fas fa-paper-plane"></i></button>
+            		</div>
+        		</div>
+    		</div>
+		</div>
 	</div>
-
+<script src="script/profilo.js"></script>
 </body>
 </html>

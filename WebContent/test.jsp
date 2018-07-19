@@ -5,8 +5,8 @@
     
 
 <%
-    	Collection<?> classifica = (Collection<?>) session.getAttribute("classifica");
-		Collection<?> formazione = null;
+    	
+		Collection<?> calciatori = null;
 		String ruolo = (String) session.getAttribute("isLogged");
 		System.out.println("Il ruolo di cicciocasillo è :" + ruolo); 
     %>
@@ -55,82 +55,44 @@
     			</ul>
   			</div>
 		</nav>
-		<div class="col-md-4">
-			<h2>La mia formazione</h2>
-			<div class="lista hidden">
-			<% formazione = (Collection<?>) session.getAttribute("formazione");
-			if (formazione != null && formazione.size() != 0) {
-				Iterator<?> iter = formazione.iterator();
-				while(iter.hasNext()) {
-					CalciatoreBean bean = (CalciatoreBean) iter.next(); %>
-					<p><b><%=bean.getNome() %></b>  <b><%=bean.getCognome() %></b></p>
-					
-			<% 	}} else  %> <p><b>Non hai ancora inserito la formazione per questa giornata</b> </p>
-			</div>
-		</div>
+		
 		<div class="col-md-4">
 			<h2>Classifica Fantamondiale</h2>
 			<div class="lista hidden">
   				<div class="lista-titoli">
-  					<h6>#</h6>
-  					<h6>Nickname</h6>
-  					<h6>Score</h6>
+  					<h6>Nome</h6>
+  					<h6>Goal</h6>
+  					<h6>Assist</h6>
+  					<h6>Ammon.</h6>
+  					<h6>Espuls.</h6>
+  					<h6>Voto</h6>
+  					<h6>Operazione</h6>
   				</div>
   				<hr>
   				<div class="contenitore-classifica">
-  				<%
-  					if (classifica != null && classifica.size() != 0) {
-  						Iterator<?> it = classifica.iterator();
-  						while (it.hasNext()) {
-  							ClassificaBean bean = (ClassificaBean) it.next();
-  				%>
-					<div class="item-classifica">
-						<p><%=bean.getPosizione()%></p>
-						<p><%=bean.getNickname() %></p>
-						<p><%=bean.getPunteggio() %></p>
-					</div>
-					<hr>
-					
-					
-					
-				
-    				<%} } %>
+  				<%  calciatori = (Collection<?>) session.getAttribute("lista-calciatori");
+  				if (calciatori != null && calciatori.size() != 0) {
+  					Iterator<?> iter = calciatori.iterator();
+  						while (iter.hasNext()) {
+  							CalciatoreBean bean = (CalciatoreBean) iter.next();
+  			%>
+			<div class="item-classifica">
+				<p><%=bean.getNome()%>  <%=bean.getCognome() %></p>
+				<input type="number">
+				<input type="number">
+				<input type="checkbox">
+				<input type="checkbox">
+				<input type="number">
+				<button>Inserisci</button>
+			</div>
+			<hr>
+
+    		<%} }  %>
 				</div>
 			</div>
 			
 		</div>
-		<div class="col-md-4">
-			<h2>Competizioni attive</h2>
-			<table class="table table-hover hidden">
-  				<thead>
-    				<tr>
-      					<th scope="col">#</th>
-      					<th scope="col">First</th>
-      					<th scope="col">Last</th>
-      					<th scope="col">Handle</th>
-    				</tr>
-  				</thead>
-  				<tbody>
-    				<tr>
-      					<th scope="row">1</th>
-      					<td>Mark</td>
-      					<td>Otto</td>
-      					<td>@mdo</td>
-    				</tr>
-    				<tr>
-      					<th scope="row">2</th>
-      					<td>Jacob</td>
-      					<td>Thornton</td>
-      					<td>@fat</td>
-    				</tr>
-    				<tr>
-      					<th scope="row">3</th>
-      					<td colspan="2">Larry the Bird</td>
-      					<td>@twitter</td>
-    				</tr>
-  				</tbody>
-			</table>
-		</div>
+		
 	</div>
 
 <script src="script/home_script.js"></script>

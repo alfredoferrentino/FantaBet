@@ -84,6 +84,8 @@ function aggiungi (element, nome, id, ruolo, prezzo) {
 	if (id_calciatore.indexOf(id) != -1) {
 		var i = id_calciatore.indexOf(id);
 		id_calciatore.splice(i,1);
+		totale -= prezzo;
+		$('.costo').text("Costo : "+totale+" /150 Crediti");
 		$("p:contains('"+nome+"')").remove();
 		$(element).find("i").remove();
 		if (ruolo == 'p')
