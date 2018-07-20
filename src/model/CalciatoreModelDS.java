@@ -13,7 +13,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import bean.CalciatoreBean;
-import control.DriverManagerConnectionPool;
+import connection.DriverManagerConnectionPool;
 
 public class CalciatoreModelDS implements CalciatoreModel {
 	private static DataSource ds;

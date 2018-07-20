@@ -44,7 +44,7 @@
       				<li><a href="home_utente.jsp">Home</a></li>
       				<li><a href="profilo.jsp">Profilo</a></li>
       				<li class="active"><a href="gestione_competizioni.jsp">Gestione Competizioni</a></li>
-      				<li><a href="AdminControl?action=utenti">Gestione Utenti</a></li>
+      				<li><a href="UtenteServlet?action=utenti">Gestione Utenti</a></li>
       			</ul>
       			<% } %>
       				
@@ -60,8 +60,8 @@
 	<div class="lista">
 		<div class="searchBar">
     		<input pattern="^[_A-z0-9]{1,30}$" id="searchComp" class="form-control" type="text" placeholder="Search" aria-label="Search">
-    		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="AdminControl?action=carica-calciatori">Inserisci voti</a>
-    		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="AdminControl?action=approva-comp">Approva Competizioni</a>
+    		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="CalciatoriServlet?action=carica-calciatori">Inserisci voti</a>
+    		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="ApprovazioniServlet?action=approva-comp">Approva Competizioni</a>
 		</div>
 		<div class="col-md-4 col-md-offset-4">
 		<h5>Lista Competizioni</h5>
@@ -156,8 +156,8 @@
 	<div class="approva">
 		<div class="searchBar">
     		<input id="searchComp" class="form-control" type="text" placeholder="Search" aria-label="Search">
-    		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="AdminControl?action=carica-calciatori">Inserisci voti</a>
-    		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="AdminControl?action=approva-comp">Approva Competizioni</a>
+    		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="CalciatoriServlet?action=carica-calciatori">Inserisci voti</a>
+    		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="ApprovazioniServlet?action=approva-comp">Approva Competizioni</a>
 		</div>
 		<div class="col-md-4 col-md-offset-4">
 		<h5>Lista Competizioni</h5>

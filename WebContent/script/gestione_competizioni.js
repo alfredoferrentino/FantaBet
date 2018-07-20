@@ -8,7 +8,7 @@ function remove(element, id) {
 					$(element).parent().remove(); }, 2000);
 		}
 	}
-	xhttp.open("GET", "/FantaBet/AdminControl?action=remove-comp&idComp="+id, true);
+	xhttp.open("GET", "/FantaBet/RimuoviCompetizioneServlet?action=remove-comp&idComp="+id, true);
 	xhttp.send();
 	
 }
@@ -20,7 +20,7 @@ input.addEventListener("keyup", function(event) {
 	  if (event.keyCode === 13) {
 	    // Trigger the button element with a click
 	   console.log("ho cliccato invio su :  " + $('.form-control').val());
-	   window.location.href = "/FantaBet/AdminControl?action=search-comp&nome="+$('.form-control').val();
+	   window.location.href = "/FantaBet/RicercaCompetizioneServlet?action=search-comp&nome="+$('.form-control').val();
 	 }
 });
 
@@ -55,7 +55,7 @@ $(document).ready(function(){
 
 function insertVoto (elemento) {
 	var el = $(elemento).parent();
-	window.location.href = "/FantaBet/AdminControl?action=insert-voto&idCalc="+el.children('#idCalc').val()+"&votazione="+el.children('#voto').val()
+	window.location.href = "/FantaBet/InserimentoVotiServlet?action=insert-voto&idCalc="+el.children('#idCalc').val()+"&votazione="+el.children('#voto').val()
 	+"&gol="+el.children('#goal').val()+"&assist="+el.children('#assist').val()+"&ammonizione="+el.children('#ammon').is(":checked")+"&espulsione="+el.children('#espuls').is(":checked");
 }
 
@@ -66,6 +66,6 @@ function mostraApprovate () {
 
 function approvaVoti (el) {
 	console.log(el);
-	window.location.href = "/FantaBet/AdminControl?action=approvate&idComp="+el;
+	window.location.href = "/FantaBet/ApprovazioniServlet?action=approvate&idComp="+el;
 }
 

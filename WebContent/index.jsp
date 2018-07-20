@@ -107,10 +107,10 @@
 	<nav class="navbar navbar-inverse">
   		<div class="container-fluid">
     		<div class="navbar-header">
-    			<a class="navbar-brand" href="#"><img src="icon/Logo.png" style="width:150px; height:60px"></a>
+    			<a class="navbar-brand" href="index.jsp"><img src="icon/Logo.png" style="width:150px; height:60px"></a>
     		</div>
     		<ul class="nav navbar-nav">
-      			<li class="active"><a href="#">Home</a></li>
+      			<li class="active"><a href="index.jsp">Home</a></li>
     		</ul>
     		<ul class="nav navbar-nav navbar-right">
       			<li><a id="loginbtn" href="#"><span class="glyphicon glyphicon-log-in"></span> Entra</a></li>

@@ -8,7 +8,7 @@ $('#modifica').click(function () {
 	else {
 		
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "/FantaBet/User?action=modifica&nickname="+$('#nick').val()+"&password="+$('#pass').val()+"&email="+$('#mail').val()+"&username="+$('#user').val(), true);
+	xhttp.open("GET", "/FantaBet/UserControl?action=modifica&nickname="+$('#nick').val()+"&password="+$('#pass').val()+"&email="+$('#mail').val()+"&username="+$('#user').val(), true);
 	xhttp.send();
 	$('.modal-header').append('<p style="color:red;">I dati sono stati cambiati</p>');
 	setTimeout(function(){

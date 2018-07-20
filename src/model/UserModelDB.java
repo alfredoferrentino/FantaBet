@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 import bean.CompetizioneBean;
 import bean.UserBean;
-import control.DriverManagerConnectionPool;
+import connection.DriverManagerConnectionPool;
 
 
 public class UserModelDB implements UserModel{

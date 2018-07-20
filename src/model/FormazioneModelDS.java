@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 import bean.CalciatoreBean;
 import bean.ClassificaBean;
-import control.DriverManagerConnectionPool;
+import connection.DriverManagerConnectionPool;
 
 
 

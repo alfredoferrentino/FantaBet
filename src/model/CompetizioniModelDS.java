@@ -13,7 +13,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import bean.CompetizioneBean;
-import control.DriverManagerConnectionPool;
+import connection.DriverManagerConnectionPool;
 
 
 

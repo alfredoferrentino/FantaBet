@@ -36,13 +36,13 @@
     			<ul class="nav navbar-nav">
       				<li class="active"><a href="home_utente.jsp">Home</a></li>
       				<li><a href="profilo.jsp">Profilo</a></li>
-      				<li><a href="Competizione?action=competizioni">Competizioni</a></li>
+      				<li><a href="CompetizioniUtenteServlet?action=competizioni">Competizioni</a></li>
       			</ul>
       			<% } else { %>
       			<ul class="nav navbar-nav">
       				<li class="active"><a href="home_utente.jsp">Home</a></li>
       				<li><a href="profilo.jsp">Profilo</a></li>
-      				<li><a href="Competizione?action=retrieve-comp">Gestione Competizioni</a></li>
+      				<li><a href="CompetizioneServlet?action=retrieve-comp">Gestione Competizioni</a></li>
       				<li><a href="gestione_utenti.jsp">Gestione Utenti</a></li>
       			</ul>
       			<% } %>

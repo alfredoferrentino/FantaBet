@@ -13,7 +13,7 @@ $( "#selectcomp" ).change(function() {
 		$('.button-group').show();
 		$('.contenitore-classifica').load('competizioni.jsp .contenitore-classifica');
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("GET", "/FantaBet/Competizione?action=classifica-comp&nome_competizione="+$('#selectcomp').val(), true);
+		xhttp.open("GET", "/FantaBet/ClassificaCompetizioneServlet?action=classifica-comp&nome_competizione="+$('#selectcomp').val(), true);
 		xhttp.send();
 		setTimeout(function(){
 			$('.contenitore-classifica').load('competizioni.jsp .contenitore-classifica'); }, 1000);
@@ -31,7 +31,7 @@ $( "#selectcomp" ).change(function() {
 
 $('#send').click(function () {
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "/FantaBet/Competizione?action=inserisci-comp&nome_competizione="+$('#form1').val()+"&num_giornate="+$('#form2').val()+"&num_partecipanti="+$('#form3').val(), true);
+	xhttp.open("GET", "/FantaBet/RichiestaServlet?action=inserisci-comp&nome_competizione="+$('#form1').val()+"&num_giornate="+$('#form2').val()+"&num_partecipanti="+$('#form3').val(), true);
 	xhttp.send();
 	$('.modal-header').append('<p style="color:red;">Competizione richiesta. Attendi che un amministratore la approvi</p>');
 	setTimeout(function(){
@@ -47,7 +47,7 @@ $('#inserisci-form').click(function () {
 $('#p').click(function () {
 	$('.list-group').load('competizioni.jsp .list-group');
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "/FantaBet/Competizione?action=load&ruolo=p", true);
+	xhttp.open("GET", "/FantaBet/ScegliFormazioneServlet?action=load&ruolo=p", true);
 	xhttp.send();
 	setTimeout(function() {
 		$('.list-group').load('competizioni.jsp .list-group').fadeIn(3000); }, 1000);
@@ -56,7 +56,7 @@ $('#p').click(function () {
 $('#d').click(function () {
 	$('.list-group').load('competizioni.jsp .list-group');
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "/FantaBet/Competizione?action=load&ruolo=d", true);
+	xhttp.open("GET", "/FantaBet/ScegliFormazioneServlet?action=load&ruolo=d", true);
 	xhttp.send();
 	setTimeout(function() {
 		$('.list-group').load('competizioni.jsp .list-group'); }, 1000);
@@ -65,7 +65,7 @@ $('#d').click(function () {
 $('#c').click(function () {
 	$('.list-group').load('competizioni.jsp .list-group');
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "/FantaBet/Competizione?action=load&ruolo=c", true);
+	xhttp.open("GET", "/FantaBet/ScegliFormazioneServlet?action=load&ruolo=c", true);
 	xhttp.send();
 	setTimeout(function() {
 		$('.list-group').load('competizioni.jsp .list-group'); }, 1000);
@@ -74,7 +74,7 @@ $('#c').click(function () {
 $('#a').click(function () {
 	$('.list-group').load('competizioni.jsp .list-group');
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "/FantaBet/Competizione?action=load&ruolo=a", true);
+	xhttp.open("GET", "/FantaBet/ScegliFormazioneServlet?action=load&ruolo=a", true);
 	xhttp.send();
 	setTimeout(function() {
 		$('.list-group').load('competizioni.jsp .list-group'); }, 1000);
@@ -183,7 +183,7 @@ $('#insert-form').click(function () {
 			return;
 		}
 	}
-	xhttp.open("GET", "/FantaBet/Competizione?action=insert-form&calciatori="+id_calciatore, true);
+	xhttp.open("GET", "/FantaBet/InserimentoFormazioneServlet?action=insert-form&calciatori="+id_calciatore, true);
 	xhttp.send();
 	$('.alert').html('<p style="color:red">La tua formazione è stata registrata con successo</p>');
 	setTimeout(function() {
@@ -199,7 +199,7 @@ $('#visualizza-form').click(function () {
 
 $('#add').click(function () {
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "/FantaBet/Competizione?action=aggiungi-part&nome_giocatore="+$('#form4').val()+"&nome_competizione="+$('#selectcomp').val(), true);
+	xhttp.open("GET", "/FantaBet/AggiungiPartecipante?action=aggiungi-part&nome_giocatore="+$('#form4').val()+"&nome_competizione="+$('#selectcomp').val(), true);
 	xhttp.send();
 	$('.modal-header').append('<p style="color:red;">Giocatore : ' +$("#form4").val() + ' aggiunto </p>');
 	setTimeout(function(){
