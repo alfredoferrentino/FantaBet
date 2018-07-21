@@ -35,9 +35,12 @@ public class RichiestaServlet extends HttpServlet {
 					System.out.println("Inserisco la competizione : " + nome_competizione);
 					int num_giornate = Integer.parseInt(request.getParameter("num_giornate"));
 					int num_partecipanti = Integer.parseInt(request.getParameter("num_partecipanti"));
+					if (!modello_competizioni.checkCompetizione(nome_competizione)) {
 					modello_competizioni.doSave(nome_competizione, num_giornate, num_partecipanti);
 					String utente = (String) request.getSession().getAttribute("utente");
 					modello_competizioni.doPartecipa(utente, modello_competizioni.doRetrieveByNome(nome_competizione));
+					}
+					else response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 				}
 			}
 

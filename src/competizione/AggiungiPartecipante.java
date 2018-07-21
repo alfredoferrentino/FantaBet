@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
 import model.PartecipaModel;
 import model.PartecipaModelDS;
+import model.UserModel;
+import model.UserModelDB;
 
 
 
@@ -21,6 +23,7 @@ public class AggiungiPartecipante extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	static PartecipaModel modello_partecipa = new PartecipaModelDS();
+	static UserModel modello_utente = new UserModelDB();
 	public AggiungiPartecipante() {
 		super();
 	}
@@ -34,8 +37,13 @@ public class AggiungiPartecipante extends HttpServlet {
 					String giocatore = (String) request.getParameter("nome_giocatore");
 					String competizione = (String) request.getParameter("nome_competizione");
 					System.out.println("Aggiungo il giocatore : " + giocatore + " alla competizione " + competizione);
-					modello_partecipa.aggiungi(giocatore, competizione);
-					
+					if (modello_utente.checkExist(giocatore)) {
+						modello_partecipa.aggiungi(giocatore, competizione);
+					}
+					else  { 
+						response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+					}
+
 				}
 			}
 

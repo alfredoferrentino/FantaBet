@@ -81,7 +81,11 @@
 			</div>
 			<hr>
 
-    		<%} }  %>
+    		<%} }  else { %>
+    		<div class="alert alert-danger">
+    		 	Non ci sono utenti con quel nome.
+  			</div>
+  			<% } %>
     		</div>
 		</div>
 	</div>

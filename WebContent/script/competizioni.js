@@ -31,9 +31,19 @@ $( "#selectcomp" ).change(function() {
 
 $('#send').click(function () {
 	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if(xhttp.readyState == 4) {
+			if(xhttp.status == 200) {
+				$('.modal-header').append('<p style="color:red;">Competizione richiesta. Attendi che un amministratore la approvi</p>');
+			}
+			else {
+				$('.modal-header').append('<p style="color:red;">Nome Competizione già esistente. Inseriscine un altro</p>');
+				
+			}
+		}
+	}
 	xhttp.open("GET", "/FantaBet/RichiestaServlet?action=inserisci-comp&nome_competizione="+$('#form1').val()+"&num_giornate="+$('#form2').val()+"&num_partecipanti="+$('#form3').val(), true);
 	xhttp.send();
-	$('.modal-header').append('<p style="color:red;">Competizione richiesta. Attendi che un amministratore la approvi</p>');
 	setTimeout(function(){
 		window.location.reload(); }, 3000);
 });
@@ -199,9 +209,18 @@ $('#visualizza-form').click(function () {
 
 $('#add').click(function () {
 	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if(xhttp.readyState == 4) {
+			if(xhttp.status == 200) {
+				$('.modal-header').append('<p style="color:red;">Giocatore : ' +$("#form4").val() + ' aggiunto </p>');
+			}
+			else {
+				$('.modal-header').append('<p style="color:red;">Giocatore : ' +$("#form4").val() + ' inesistente </p>');
+			}
+		}
+	}
 	xhttp.open("GET", "/FantaBet/AggiungiPartecipante?action=aggiungi-part&nome_giocatore="+$('#form4').val()+"&nome_competizione="+$('#selectcomp').val(), true);
 	xhttp.send();
-	$('.modal-header').append('<p style="color:red;">Giocatore : ' +$("#form4").val() + ' aggiunto </p>');
 	setTimeout(function(){
-		window.location.reload(); }, 3000);
+		$('.modal-header').empty(); }, 2000);
 });

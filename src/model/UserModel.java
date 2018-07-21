@@ -20,4 +20,6 @@ public interface UserModel {
 	public void doUpdate(String nickname, String password, String email,String username) throws SQLException;
 	
 	public Collection<UserBean> doSearch (String utente) throws SQLException;
+	
+	public boolean checkExist(String username) throws SQLException;
 }

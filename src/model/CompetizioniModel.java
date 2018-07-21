@@ -16,4 +16,5 @@ public interface CompetizioniModel {
 	public void Approva(int id) throws SQLException;
 	public void doPartecipa(String utente, int comp) throws SQLException;
 	public int doRetrieveByNome(String nome) throws SQLException;
+	public boolean checkCompetizione(String nome) throws SQLException;
 }

@@ -86,7 +86,11 @@
 			</div>
 			<hr>
 
-    		<%} }  %>
+    		<%} } else { %>
+    		<div class="alert alert-danger">
+    		 	Non ci sono competizioni con quel nome.
+  			</div>
+  			<% } %>
     		</div>
 		</div>
 	</div>

@@ -327,4 +327,37 @@ public class CompetizioniModelDS implements CompetizioniModel {
 		return id;
 	}
 
+	@Override
+	public boolean checkCompetizione(String nome) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "SELECT * FROM  competizione WHERE nome = ? ";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, nome);
+			
+			
+
+			ResultSet rs = preparedStatement.executeQuery();
+			
+
+			if (rs.next()) {
+				return true;
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return false;
+	}
+
 }

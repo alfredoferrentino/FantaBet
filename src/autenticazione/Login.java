@@ -84,7 +84,7 @@ public class Login extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('User or password incorrect');");
-			out.println("location='/index.jsp';");
+			out.println("location='/FantaBet/index.jsp';");
 			out.println("</script>");
 			System.out.println("username or pass incorrect!");
 			
