@@ -56,7 +56,7 @@
 
 	<div class="lista"> 
 		<div class="searchBar">
-    		<input pattern="^[_A-z0-9]{1,30}$" id="searchUser" class="form-control" type="text" placeholder="Search" aria-label="Search">
+    		<input id="searchUser" class="form-control" type="text" placeholder="Search" aria-label="Search">
 		</div>
 		<div class="col-md-4 col-md-offset-4">
 		<h5>Lista Utenti</h5>
@@ -125,38 +125,40 @@
                 		</button>
             		</div>
            			<div class="modal-body mx-3">
-           			<form role="form" data-toggle="validator">
+           			<form action="ModificaUtenteServlet" action="get" role="form" data-toggle="validator">
            			<div class="modal-body mx-3">
            				<div class="form-group">
     						<label for="nick" class="control-label">Nickname</label>
-    						<input pattern="^[_A-z0-9]{1,20}$" type="text" class="form-control" id="nick">
+    						<input pattern="^[_A-z0-9]{1,20}$" type="text" class="form-control" id="nick" name="nick">
     						<div class="help-block with-errors">Only letters and numbers, no special characters</div>
   						</div>
   						<div class="form-group">
     						<label for="pass" class="control-label">Password</label>
-        					<input type="password" pattern="^[_A-z0-9]{6,15}$" class="form-control" id="pass">
+        					<input type="password" pattern="^[_A-z0-9]{6,15}$" class="form-control" id="pass" name="pass">
        						 <div class="help-block with-errors">Minimum of 6 characters, no special characters</div>
       					</div>
       					<div class="form-group">
       						<label for="pass-conf" class="control-label">Confirm Password</label>
-        					<input type="password" class="form-control" id="pass-conf" data-match="#pass" data-match-error="Whoops, these don't match" placeholder="Confirm">
+        					<input type="password" class="form-control" id="pass-conf" data-match="#pass" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
         					<div class="help-block with-errors"></div>
         				</div>
         				<div class="form-group">
    							<label for="mail">Email</label>
-   							<input class="form-control" type="email" id="mail">
+   							<input class="form-control" type="email" id="mail" name="mail">
    							<div class="help-block with-errors"></div>
   						</div>
   						<div class="form-group">
     						<label for="username" class="control-label">Username</label>
-    						<input pattern="^[_A-z0-9]{1,20}$" type="text" class="form-control" id="username">
+    						<input pattern="^[_A-z0-9]{1,20}$" type="text" class="form-control" id="username" name="username">
     						<div class="help-block with-errors">Only letters and numbers, no special characters</div>
   						</div>
             		</div>
-            		</form>
-            		</div>
+            		
+            		
             		<div class="modal-footer">
-                		<button id="modifica" class="btn btn-primary btn-lg">Modifica<i class="fas fa-paper-plane"></i></button>
+                		<button type="submit" class="btn btn-primary btn-lg btn-block">Modifica<i class="fas fa-paper-plane"></i></button>
+            		</div>
+            		</form>
             		</div>
         		</div>
     		</div>

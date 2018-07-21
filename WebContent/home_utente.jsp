@@ -8,7 +8,6 @@
     	Collection<?> classifica = (Collection<?>) session.getAttribute("classifica");
 		Collection<?> formazione = null;
 		String ruolo = (String) session.getAttribute("isLogged");
-		System.out.println("Il ruolo di cicciocasillo è :" + ruolo); 
     %>
 
 <!DOCTYPE html>
@@ -43,7 +42,7 @@
       				<li class="active"><a href="home_utente.jsp">Home</a></li>
       				<li><a href="profilo.jsp">Profilo</a></li>
       				<li><a href="CompetizioneServlet?action=retrieve-comp">Gestione Competizioni</a></li>
-      				<li><a href="gestione_utenti.jsp">Gestione Utenti</a></li>
+      				<li><a href="UtenteServlet?action=utenti">Gestione Utenti</a></li>
       			</ul>
       			<% } %>
       				

@@ -59,7 +59,7 @@
 
 	<div class="lista">
 		<div class="searchBar">
-    		<input pattern="^[_A-z0-9]{1,30}$" id="searchComp" class="form-control" type="text" placeholder="Search" aria-label="Search">
+    		<input id="searchComp" class="form-control" type="text" placeholder="Search" aria-label="Search">
     		<a class="text-warning" style="text-decoration:none;" onclick="mostraCalciatori()" href="CalciatoriServlet?action=carica-calciatori">Inserisci voti</a>
     		<a class="text-warning" style="text-decoration:none;" onclick="mostraApprovate()" href="ApprovazioniServlet?action=approva-comp">Approva Competizioni</a>
 		</div>

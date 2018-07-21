@@ -1,6 +1,7 @@
 package gestioneutente;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javax.servlet.RequestDispatcher;
+
 import model.UserModel;
 import model.UserModelDB;
 
@@ -26,18 +27,16 @@ public class ModificaUtenteServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
 
 		try {
-			if (action != null) {
-				if (action.equalsIgnoreCase("modifica-utente")) {
-					String username = (String) request.getParameter("username");
-					String password = (String) request.getParameter("password");
-					String nickname = (String) request.getParameter("nickname");
-					String email = (String) request.getParameter("email");
-					modello_user.doUpdate(nickname, password, email, username);
-				}
-			}
+
+
+			String username = (String) request.getParameter("username");
+			String password = (String) request.getParameter("pass");
+			String nickname = (String) request.getParameter("nick");
+			String email = (String) request.getParameter("mail");
+			modello_user.doUpdate(nickname,password,email,username);
+
 
 
 		}
@@ -45,8 +44,13 @@ public class ModificaUtenteServlet extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/gestione_utenti.jsp");
-		dispatcher.forward(request, response);
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('I dati sono stati correttamente modificati.');");
+		out.println("location='/FantaBet/profilo.jsp';");
+		out.println("</script>");
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
