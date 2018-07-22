@@ -53,9 +53,16 @@ $(document).ready(function(){
     localStorage.removeItem('show');
 });
 
+function checkVoto(element) {
+	var e = $(element).parent();
+	if (e.children('#voto').val() > 10 )
+		 e.children('#button-insert').prop("disabled",true);
+	else e.children('#button-insert').prop("disabled",false);
+}
+
 function insertVoto (elemento) {
 	var el = $(elemento).parent();
-	window.location.href = "/FantaBet/InserimentoVotiServlet?action=insert-voto&idCalc="+el.children('#idCalc').val()+"&votazione="+el.children('#voto').val()
+	window.location.href = "/FantaBet/InserimentoVotiServlet?idCalc="+el.children('#idCalc').val()+"&votazione="+el.children('#voto').val()
 	+"&gol="+el.children('#goal').val()+"&assist="+el.children('#assist').val()+"&ammonizione="+el.children('#ammon').is(":checked")+"&espulsione="+el.children('#espuls').is(":checked");
 }
 

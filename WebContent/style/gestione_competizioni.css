@@ -85,3 +85,8 @@ dt {
 dd {
 	display:inline;
 }
+
+input:invalid {
+  border: 2px dashed red;
+}
+

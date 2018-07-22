@@ -144,12 +144,12 @@
 			<div class="item-classifica">
 				<h5><%=bean.getNome()%>  <%=bean.getCognome() %></h5>
 				<input type="hidden" id="idCalc" value="<%=bean.getId() %>">
-				<input id="goal" type="number" class="form-control validate" placeholder="Goal">
-				<input id="assist" type="number"class="form-control validate" placeholder="Assist">
+				<input id="goal" type="number" class="form-control validate" placeholder="Goal" value="0">
+				<input id="assist" type="number"class="form-control validate" placeholder="Assist" value="0">
 				<input id="ammon" type="checkbox" class="form-control validate">
 				<input id="espuls" type="checkbox" class="form-control validate">
-				<input id="voto" type="number" class="form-control validate" placeholder="Voto">
-				<button onclick="insertVoto(this)" type="button" class="btn btn-warning">Inserisci</button>
+				<input onchange="checkVoto(this)" id="voto" min="0" max="10" type="number" class="form-control validate" placeholder="Voto">
+				<button id="button-insert" onclick="insertVoto(this)" type="button" class="btn btn-warning">Inserisci</button>
 			</div>
 			<hr>
 

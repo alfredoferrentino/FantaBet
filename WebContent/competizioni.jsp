@@ -104,33 +104,31 @@
                     	<span aria-hidden="true">&times;</span>
                 		</button>
             		</div>
-           			<div class="modal-body mx-3">
-           			<form role="form" data-toggle="validator">
+           			<form action="RichiestaServlet" method="get" role="form" data-toggle="validator">
            			<div class="modal-body mx-3">
            				<div class="form-group">
            					<i class="fas fa-users"></i>
     						<label for="form3" class="control-label">Con quante persone vuoi giocare?</label>
-    						<input min="2" max="10" type="number" class="form-control" id="form3">
+    						<input min="2" max="10" type="number" class="form-control" id="form3" name="num_partecipanti" required>
     						<div class="help-block with-errors"></div>
   						</div>
   						<div class="form-group">
   							<i class="fas fa-list-ol"></i>
     						<label for="form2" class="control-label">Quante giornate vuoi giocare?</label>
-        					<input type="number" min="1" max="38" class="form-control" id="form2">
+        					<input type="number" min="1" max="38" class="form-control" id="form2" name="num_giornate" required>
        						 <div class="help-block with-errors"></div>
       					</div>
       					<div class="form-group">
       						<i class="fa fa-user prefix grey-text"></i>
       						<label for="form1" class="control-label">Nome della competizione</label>
-        					<input pattern="^[_A-z0-9]{1,30}$" type="text" class="form-control" id="form1">
+        					<input pattern="^[_A-z0-9]{1,30}$" type="text" class="form-control" id="form1" name="nome_competizione" required>
         					<div class="help-block with-errors"></div>
         				</div>
-        				
-            		</div>
-            		</form>
             		</div>
             		<div class="modal-footer">
-                		<button id="send" class="btn btn-primary btn-lg">Richiedi <i class="fas fa-paper-plane"></i></button>
+                		<button type="submit" id="send" class="btn btn-primary btn-lg">Richiedi <i class="fas fa-paper-plane"></i></button>
+            		</div>
+            		</form>
             		</div>
         		</div>
     		</div>

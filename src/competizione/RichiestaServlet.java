@@ -1,6 +1,7 @@
 package competizione;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -26,22 +27,27 @@ public class RichiestaServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
+
 
 		try {
-			if (action != null) {
-				if (action.equalsIgnoreCase("inserisci-comp")) {
-					String nome_competizione = (String) request.getParameter("nome_competizione");
-					System.out.println("Inserisco la competizione : " + nome_competizione);
-					int num_giornate = Integer.parseInt(request.getParameter("num_giornate"));
-					int num_partecipanti = Integer.parseInt(request.getParameter("num_partecipanti"));
-					if (!modello_competizioni.checkCompetizione(nome_competizione)) {
-					modello_competizioni.doSave(nome_competizione, num_giornate, num_partecipanti);
-					String utente = (String) request.getSession().getAttribute("utente");
-					modello_competizioni.doPartecipa(utente, modello_competizioni.doRetrieveByNome(nome_competizione));
-					}
-					else response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
-				}
+			String nome_competizione = (String) request.getParameter("nome_competizione");
+			System.out.println("Inserisco la competizione : " + nome_competizione);
+			int num_giornate = Integer.parseInt(request.getParameter("num_giornate"));
+			int num_partecipanti = Integer.parseInt(request.getParameter("num_partecipanti"));
+			if (!modello_competizioni.checkCompetizione(nome_competizione)) {
+				modello_competizioni.doSave(nome_competizione, num_giornate, num_partecipanti);
+				String utente = (String) request.getSession().getAttribute("utente");
+				modello_competizioni.doPartecipa(utente, modello_competizioni.doRetrieveByNome(nome_competizione));
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/competizioni.jsp");
+				dispatcher.forward(request, response);
+			}
+			else  {
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Competizione già esistente');");
+				out.println("location='/FantaBet/competizioni.jsp';");
+				out.println("</script>");
 			}
 
 
@@ -50,8 +56,7 @@ public class RichiestaServlet extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/competizioni.jsp");
-		dispatcher.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

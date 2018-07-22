@@ -29,7 +29,7 @@ $( "#selectcomp" ).change(function() {
 	}
 });
 
-$('#send').click(function () {
+/*$('#send').click(function () {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if(xhttp.readyState == 4) {
@@ -47,7 +47,7 @@ $('#send').click(function () {
 	setTimeout(function(){
 		window.location.reload(); }, 3000);
 });
-
+*/
 $('#inserisci-form').click(function () {
 	$('.lista').hide();
 	$('.visualizza_formazione').hide();

@@ -28,25 +28,19 @@ public class InserimentoVotiServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
+
 
 		try {
-			if (action != null) {
-				if (action.equalsIgnoreCase("insert-voto")) {
-					int idCalc = Integer.parseInt(request.getParameter("idCalc"));
-					int giornata = (int) request.getSession().getAttribute("giornata");
-					double votazione = Double.parseDouble(request.getParameter("votazione"));
-					int gol = Integer.parseInt(request.getParameter("gol"));
-					int assist = Integer.parseInt(request.getParameter("assist"));
-					boolean ammonizione =  Boolean.parseBoolean(request.getParameter("ammonizione"));
-					boolean espulsione = Boolean.parseBoolean(request.getParameter("espulsione"));
-					System.out.println("ID Calciatore : " + idCalc + "Giornata : " + giornata + "Votazione : " + votazione +
-							"Gol : " + gol + "Assist : " + assist + "Ammonizione : "+ ammonizione + "Espulsione : " + espulsione);
-					modello_calciatore.doSaveVoto(idCalc, giornata, votazione, gol, assist, ammonizione, espulsione);
-					
-				}
-			}
-
+			int idCalc = Integer.parseInt(request.getParameter("idCalc"));
+			int giornata = (int) request.getSession().getAttribute("giornata");
+			double votazione = Double.parseDouble(request.getParameter("votazione"));
+			int gol = Integer.parseInt(request.getParameter("gol"));
+			int assist = Integer.parseInt(request.getParameter("assist"));
+			boolean ammonizione =  Boolean.parseBoolean(request.getParameter("ammonizione"));
+			boolean espulsione = Boolean.parseBoolean(request.getParameter("espulsione"));
+			System.out.println("ID Calciatore : " + idCalc + "Giornata : " + giornata + "Votazione : " + votazione +
+					"Gol : " + gol + "Assist : " + assist + "Ammonizione : "+ ammonizione + "Espulsione : " + espulsione);
+			modello_calciatore.doSaveVoto(idCalc, giornata, votazione, gol, assist, ammonizione, espulsione);
 
 		}
 		catch (SQLException e) {
